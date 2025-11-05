@@ -1,115 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>HA Tunnel File Decryptor</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f6f8fa; padding: 30px; }
-    label, input, button, textarea { display: block; margin-top: 15px; }
-    textarea { width: 100%; height: 130px; }
-    #outputDiv { margin-top: 15px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGENDS OF FREENET</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        .header {
+            font-size: 24px;
+            color: blue;
+        }
+        .header span {
+            color: red;
+        }
+        .nav-links {
+            color: red;
+            font-size: 18px;
+            margin: 20px;
+        }
+        .nav-links a {
+            margin: 0 10px;
+            color: red;
+            text-decoration: none;
+        }
+        .image-container {
+            border: 2px solid blue;
+            display: inline-block;
+            padding: 10px;
+        }
+        .image-container img {
+            width: 300px; /* adjust width as needed */
+            height: auto;
+        }
+        .click-here {
+            color: red;
+            margin: 20px;
+        }
+        .upload-section {
+            margin: 20px;
+        }
+        .upload-btn {
+            background-color: turquoise;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <h2>HA Tunnel (HAT) File Decryptor</h2>
-  <label>Select .hat File:
-    <input type="file" id="fileInput" accept=".hat,.txt,.bin">
-  </label>
-  <label>
-    AES Key (Hex, Optional): <input type="text" id="aesKey" placeholder="e.g. 00112233445566778899aabbccddeeff">
-  </label>
-  <label>
-    AES IV (Hex, Optional): <input type="text" id="aesIv" placeholder="e.g. 0102030405060708">
-  </label>
-  <label>
-    AES Mode:
-    <select id="aesMode">
-      <option value="CBC">CBC</option>
-      <option value="ECB">ECB (no IV)</option>
-    </select>
-  </label>
-  <button onclick="decryptFile()">Base64 Decode + AES Decrypt</button>
-  <div id="outputDiv"></div>
-
-  <!-- CryptoJS (for browser-side AES & base64) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
-  <script>
-    function ab2str(buf) {
-      return String.fromCharCode.apply(null, new Uint8Array(buf));
-    }
-
-    function hexToWordArray(hexStr) {
-      return CryptoJS.enc.Hex.parse(hexStr);
-    }
-
-    function decryptFile() {
-      const fileInput = document.getElementById('fileInput');
-      const keyHex = document.getElementById('aesKey').value.trim();
-      const ivHex = document.getElementById('aesIv').value.trim();
-      const mode = document.getElementById('aesMode').value;
-      const outDiv = document.getElementById('outputDiv');
-      outDiv.innerHTML = "";
-
-      if (!fileInput.files.length) { outDiv.textContent = "Please choose a file."; return; }
-      const file = fileInput.files[0];
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        // Step 1: Base64 decode
-        let decoded;
-        try {
-          let b64data = e.target.result.replace(/\r\n/g,'').replace(/\n/g,'');
-          decoded = CryptoJS.enc.Base64.parse(b64data);
-        } catch (err) {
-          outDiv.innerHTML = `<span style="color:red">Base64 decode failed: ${err}</span>`;
-          return;
-        }
-
-        // Step 2: AES decrypt if key is provided
-        if (keyHex) {
-          let keyWA = hexToWordArray(keyHex);
-          let ivWA = ivHex ? hexToWordArray(ivHex) : undefined;
-          let aesMode = mode === "ECB" ? CryptoJS.mode.ECB : CryptoJS.mode.CBC;
-          let options = { mode: aesMode, padding: CryptoJS.pad.Pkcs7 };
-          if (ivWA && mode !== "ECB") options.iv = ivWA;
-
-          try {
-            let decrypted = CryptoJS.AES.decrypt(
-              { ciphertext: decoded }, keyWA, options
-            );
-            const plaintext = decrypted.toString(CryptoJS.enc.Utf8) || "(binary/invalid UTF-8)";
-            outDiv.innerHTML = `
-              <b>Output (Decrypted):</b><br>
-              <textarea readonly>${plaintext}</textarea>
-              <button onclick="downloadOutput('${btoa(decrypted.toString(CryptoJS.enc.Latin1))}', 'decrypted_output.bin')">Download Binary</button>
-            `;
-          } catch (err) {
-            outDiv.innerHTML = `<span style="color:red">AES decryption failed: ${err}</span>`;
-          }
-        } else {
-          // If no key, just show Base64-decoded (likely still encrypted)
-          const b64out = decoded.toString(CryptoJS.enc.Latin1);
-          outDiv.innerHTML = `
-            <b>Output (Base64-decoded):</b><br>
-            <textarea readonly>${b64out}</textarea>
-            <button onclick="downloadOutput('${btoa(b64out)}', 'base64_decoded.bin')">Download Binary</button>
-          `;
-        }
-      }
-      reader.readAsText(fileInput.files[0]);
-    }
-
-    function downloadOutput(b64str, fname) {
-      const binary = atob(b64str);
-      const bytes = new Uint8Array(binary.length);
-      for (let i = 0; i < binary.length; i++)  bytes[i] = binary.charCodeAt(i);
-      const blob = new Blob([bytes], { type: "application/octet-stream" });
-      const link = document.createElement("a");
-      link.href = window.URL.createObjectURL(blob);
-      link.download = fname;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  </script>
+    <h1 class="header">LEGENDS OF FREENET <span>😋</span></h1>
+    <div class="nav-links">
+        <a href="            
+        <a href="#">UPDATES</a>
+        <a href="              
+        <a href="#">MENU</a>
+    </div>
+    <div class="image-container">
+        <img src="path-to-your-image.jpg" alt="Freenet Character">
+    </div>
+    <div class="click-here">CLICK.HERE...</div>
+    <div class="upload-section">
+        <input type="file" id="file1">
+        <button class="upload-btn">Upload (form)</button>
+    </div>
+    <div class="upload-section">
+        <input type="file" id="file2">
+        <button class="upload-btn">Upload (AJAX)</button>
+    </div>
 </body>
 </html>
