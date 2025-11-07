@@ -1,31 +1,214 @@
-<!doctype HTML>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
- <title>Sample</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-
 <body>
- <h1 style="font-size: 60px;">𝗟𝗘𝗗𝗘𝗡𝗗𝗦 𝗢𝗙 𝗙𝗥𝗘𝗘𝗡𝗘𝗧</h1>
-</div>
-  <body>
-  <br><br>
- <div style="display: flex; justify-content: center;">
-  <a href="contact.html" style="font-size: 40px; text-decoration: blue; font-family: 'Fraktur', sans-serif;">𝖢𝖮𝖭𝖳𝖠𝖢𝖳</a>
- </div>
-  <br>
- <div style="display: flex; justify-content: center;">
-<a href="updates.html" style="font-size: 40px; text-decoration: none;">𝖴𝖯𝖣𝖠𝖳𝖤</a>
-</div>
-  </div>
- <br>
- <div style="display: flex; justify-content: center;">
-<a href="about.html" style="font-size: 40px; text-decoration: none;">𝖠𝖡𝖮𝖴𝖳</a>
-</div>
- <br>
- <div style="display: flex; justify-content: center;">
-<a href="host.html" style="font-size: 40px; text-decoration: none;">𝖧𝖮𝖲𝖳 𝖳𝖤𝖲𝖳𝖤𝖱</a>
-</div>
-   <br><br><a href="https://ibb.co/hR9HLJfV"><img src="https://i.ibb.co/Fb3JmLVz/IMG-20251107-WA0000.jpg" alt="IMG-20251107-WA0000" border="0"></a>
+    <p>LEGENDS OF FREENET🫠</hl>
+        <style>
+            p{
+            font-size: 20px;
+            color:blue;
+            font-family:cursive;
+            text-align: center;
+            text-transform:uppercase;
+            text-decoration: blueviolet;
+            background-color: calc(100% - 20px);
+            padding: 10px;
+            border: 2px solid blue;
+            border-radius: 12px;
+            
+            }
+        </style>
 
- <body bgcolor="red">
+        <body bgcolor="m">
+     
+    <body>
+        <br><br>
+    <a href="about.html">ABOUT</a>
+    <style>
+       a{
+        
+        font-size: 20px;
+       } 
+    </style>
+    <br>
+    <a href="updates.html">UPDATES</a>
+
+    <br>
+    <a href="about.html"></a>
+    
+    <a href="contact.html">CONTACT</a>
+<br>
+    <a href="menu.html">MENU</a
+       
+    <br><br>
+    <body>
+        
+        </a>
+
+    <a href="https://ibb.co/w5cKs22"><img src="https://i.ibb.co/9QZqtdd/IMG-20250916-WA0188.jpg" alt="IMG-20250916-WA0188" border="0" /></a>
+    <style>
+        img{
+            width:250px;
+            height:300px;
+            object-fit: cover;
+            border: 2px solid blue;
+            border-radius:12px;
+
+        }
+    </style>
+    
+    <br>
+    
+    <style>
+        input{
+            font-size:10px;
+            color:blue;
+            font-family:cursive;
+            text-align:right;
+            background-color:aqua;
+            border:6px;
+            border-radius:25px;
+            padding:5px;
+
+
+        }
+  </style>
+<br>
+       <body>
+
+       <a href="button.html">CLICK HERE</a>
+       </body>
+       <style>
+      a{
+          font-size:20px;
+          color:red;
+          font-family:cursive;
+          text-align:center;
+          text-transform:uppercase;
+          text-decoration:underline;
+          background-color:pin;
+          padding: 2px;
+          border:2px solid black;
+          border-radius:8px;
+          button:hover{
+            background-color: yellow;
+            color:green;
+
+          }
+
+       }
+       </style>
+
+</html>
+
+..
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Upload file</title>
+      </head>
+      <body>
+        <h2>Send a file</h2>
+
+          <!-- Simple form POST (no JS) -->
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" required />
+                    <button type="submit">Upload (form)</button>
+                      </form>
+
+                        <hr>
+
+                          <!-- AJAX upload using Fetch -->
+                            <input id="fileInput" type="file" />
+                              <button id="sendBtn">Upload (AJAX)</button>
+
+                                <script>
+                                    document.getElementById('sendBtn').addEventListener('click', async () => {
+                                          const f = document.getElementById('fileInput').files[0];
+                                                if (!f) return alert('Choose a file first');
+                                                      const fd = new FormData();
+                                                            fd.append('file', f);
+                                                                  try {
+                                                                          const res = await fetch('/upload', { method: 'POST', body: fd });
+                                                                                  const text = await res.text();
+                                                                                          alert('Server: ' + text);
+                                                                                                } catch (err) {
+                                                                                                        alert('Upload failed: ' + err);
+                                                                                                              }
+                                                                                                                  });
+                                                                                                                  const path = require('path');
+                                                                                                                  const express = require('express');
+                                                                                                                  const multer = require('multer');
+
+                                                                                                                  const app = express();
+                                                                                                                  const uploadDir = path.join(__dirname, '..', 'uploads');
+                                                                                                                  const storage = multer.diskStorage({
+                                                                                                                    destination: (req, file, cb) => cb(null, uploadDir),
+                                                                                                                      filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
+                                                                                                                      });
+                                                                                                                      const upload = multer({ storage });
+
+                                                                                                                      app.use(express.static(path.join(__dirname, '..', 'public')));                                                                                                                     app.post('/upload', upload.single('file'), (req, res) => {
+                                                                                                                        if (!req.file) return res.status(400).send('No file uploaded');
+                                                                                                                          res.send(`Saved as ${req.file.filename}`);
+                                                                                                                          });
+
+                                                                                                                          const PORT = 3000;
+                                                                                                                          app.listen(PORT, () => console.log(`Server listening http://localhost:${PORT}/upload.html`));
+                                                                                                                    </script>
+                                                                                                                    </body>
+                                                                                                                    </html>
+
+                                                                                                        
+
+
+                                                                                                               
+                                                                                                               
+                                                                                                                  
+                                                                                                                    
+                                                                                                                    
+                                                                                                       
+                                                                                                                  
+                                                                                    
+                                                                                                                      
+                                                                                                                
+                                                                                                                        
+                                                                                                                          
+                                                                                                                        
+                                                                                                                      
+                                                                                                                 
+                                                                                                                        
+                                                                                                               
+                                                                                                                        
+
+                                                                                                                    
+                                                                                                                        
+                                                                                                                  
+                                                                                                                            
+
+                                                                                                                       
+                                                                                                                          
+                                                                                                                             
+                                                                                                                               
+                                                                                                                                      
+                                                                                                                                  
+                                                                                                                               
+                                                                                                                                            
+                                                                                                                                               
+                                                                                                                                                  
+                                                                                                                                                          
+                                                                                                                                                            
+                                                                                                                                                                      
+                                                                                                                                                                         
+                                                                                                                                                                          
+                                                                                                                                                                        
+                                                                                                                                                                         
+                                                                                                                                                                          
+                                                                                                               
+
