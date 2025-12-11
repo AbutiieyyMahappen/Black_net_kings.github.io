@@ -8,8 +8,7 @@ Please support us by **forking** our repo and **leaving a 🌟** for more projec
 BNK is a squad/GANG where we work together to hunt hosts, build VPN files & cetre..
 
 **What we provide**
-- **To-Do List**
-  - [x] HTTP CUSTOM FILES
+- - [x] HTTP CUSTOM FILES
   - [x] HTTP INJECTOR FILES
   - [x] HA TUNNEL PLUS
   - [x] & MORE
