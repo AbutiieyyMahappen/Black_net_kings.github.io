@@ -1,7 +1,8 @@
 # Black_net_kings.github.io
 
- Sentence 1 (2 spaces at end)  
- Sentence 2 (new line)
+ First of all we would like to thank you who visited our repo it really mean alot to us as BNK'S() 
+
+ YES HOW (new line)
 
  Sentence 3 (empty line above)
 
