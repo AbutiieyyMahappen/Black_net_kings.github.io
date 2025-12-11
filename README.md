@@ -14,7 +14,14 @@
 
 
 
-*how to use Host tester..🫤
+**Inline HTML**
+<span style="color: red">Red text</span>
+<span style="color: green">Green text</span>
+
+**Diff syntax**
+- 1.0.0 - "Initial Release"
++ 1.1.0 - "New Feature"
+
 
 *//to be continued..!
 
