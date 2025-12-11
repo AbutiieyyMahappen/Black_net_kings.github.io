@@ -14,10 +14,9 @@ BNK is a squad/GANG where we work together to hunt hosts, build VPN files & cetr
   - [x] HA TUNNEL PLUS
   - [x] & MORE
 
-WEBSITE VERSION 1.2
+***how to use Host tester
+**Host tester is where u test if a host is working or not e.www.bnksquad.co.za
+github repo https://abutiieyymahappen.github.io/Black_net_kings.github.io/
 
-github repo *https://abutiieyymahappen.github.io/Black_net_kings.github.io/
-
-
-*Facebook acc 
+Facebook acc 
 https://www.facebook.com/profile.php?id=100070641910323
